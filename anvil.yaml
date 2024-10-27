@@ -1,0 +1,225 @@
+allow_embedding: false
+correct_dependency_ids: {}
+db_schema:
+  columns:
+    client: none
+    columns:
+    - admin_ui: {width: 200}
+      name: title
+      type: string
+    - admin_ui: {width: 200}
+      name: type
+      type: string
+    server: full
+    title: Columns
+  comments:
+    client: none
+    columns:
+    - admin_ui: {width: 200}
+      name: comment
+      type: string
+    - admin_ui: {width: 200}
+      name: user
+      target: users
+      type: link_single
+    - admin_ui: {width: 200}
+      name: project
+      target: projects
+      type: link_single
+    server: full
+    title: Comments
+  projects:
+    client: search
+    columns:
+    - admin_ui: {width: 200}
+      name: project_name
+      type: string
+    - admin_ui: {width: 200}
+      name: columns
+      target: columns
+      type: link_multiple
+    server: full
+    title: Projects
+  rows:
+    client: none
+    columns:
+    - admin_ui: {width: 200}
+      name: project
+      target: projects
+      type: link_single
+    - admin_ui: {width: 1165}
+      name: data
+      type: simpleObject
+    server: full
+    title: Rows
+  users:
+    client: none
+    columns:
+    - admin_ui: {width: 200}
+      name: email
+      type: string
+    - admin_ui: {width: 200}
+      name: enabled
+      type: bool
+    - admin_ui: {width: 200}
+      name: last_login
+      type: datetime
+    - admin_ui: {width: 159}
+      name: password_hash
+      type: string
+    - admin_ui: {width: 200}
+      name: n_password_failures
+      type: number
+    - admin_ui: {width: 200}
+      name: confirmed_email
+      type: bool
+    - admin_ui: {width: 200}
+      name: signed_up
+      type: datetime
+    - admin_ui: {width: 200}
+      name: color
+      type: string
+    - admin_ui: {order: 8, width: 512}
+      name: remembered_logins
+      type: simpleObject
+    server: full
+    title: Users
+dependencies: []
+exported_table_schema:
+- client: search
+  columns:
+    27kRB0SS3KE=:
+      admin_ui: {order: 1, width: 200}
+      backend: anvil.tables.Row
+      name: columns
+      table_id: 862978
+      type: liveObjectArray
+    6t8_tK7Nv4k=:
+      admin_ui: {order: 0, width: 200}
+      name: project_name
+      type: string
+  id: 862976
+  name: Projects
+  python_name: projects
+  server: full
+- client: none
+  columns:
+    c3JBWLSqVvo=:
+      admin_ui: {order: 0, width: 200}
+      backend: anvil.tables.Row
+      name: project
+      table_id: 862976
+      type: liveObject
+    pWbQkA_XpUo=:
+      admin_ui: {order: 1, width: 1165}
+      name: data
+      type: simpleObject
+  id: 862977
+  name: Rows
+  python_name: rows
+  server: full
+- client: none
+  columns:
+    Dx5b1BpRP4I=:
+      admin_ui: {order: 0, width: 200}
+      name: title
+      type: string
+    NpcFQM5xOy0=:
+      admin_ui: {order: 1, width: 200}
+      name: type
+      type: string
+  id: 862978
+  name: Columns
+  python_name: columns
+  server: full
+- client: none
+  columns:
+    0DbrBuAZJTg=:
+      admin_ui: {order: 8, width: 512}
+      name: remembered_logins
+      type: simpleObject
+    48ktszJSKBQ=:
+      admin_ui: {order: 6, width: 200}
+      name: signed_up
+      type: datetime
+    7fUsWfwKLQI=:
+      admin_ui: {order: 7, width: 200}
+      name: color
+      type: string
+    cgd7TXYKfuY=:
+      admin_ui: {order: 0, width: 200}
+      name: email
+      type: string
+    jPPnk_gtOJg=:
+      admin_ui: {order: 5, width: 200}
+      name: confirmed_email
+      type: bool
+    mjjNJNL2ft8=:
+      admin_ui: {order: 1, width: 200}
+      name: enabled
+      type: bool
+    mn2v04os9H4=:
+      admin_ui: {order: 3, width: 159}
+      name: password_hash
+      type: string
+    tHQchOZHx+M=:
+      admin_ui: {order: 4, width: 200}
+      name: n_password_failures
+      type: number
+    u4SYvJ1CeXo=:
+      admin_ui: {order: 2, width: 200}
+      name: last_login
+      type: datetime
+  id: 862979
+  name: Users
+  python_name: users
+  server: full
+- client: none
+  columns:
+    RqB05Q+4_0I=:
+      admin_ui: {order: 1, width: 200}
+      backend: anvil.tables.Row
+      name: user
+      table_id: 862979
+      type: liveObject
+    WG1GlsOjXPo=:
+      admin_ui: {order: 0, width: 200}
+      name: comment
+      type: string
+    qWKaYCLruKg=:
+      admin_ui: {order: 2, width: 200}
+      backend: anvil.tables.Row
+      name: project
+      table_id: 862976
+      type: liveObject
+  id: 862980
+  name: Comments
+  python_name: comments
+  server: full
+metadata: {description: A simple task management app demonstrating the Anvil Material 3 theme., title: Task Manager App}
+name: Task Manager App 1
+package_name: Task_Manager_App_1
+renamed: true
+runtime_options:
+  client_version: '3'
+  server_spec: {base: python310-minimal}
+  server_spec_disabled:
+    base: python310-minimal
+    requirements: |-
+      requests==2.32.3
+      certifi==2024.8.30
+      urllib3==2.2.3
+  server_version: python3-sandbox
+  version: 2
+services:
+- client_config: {enable_v2: true}
+  server_config: {}
+  source: /runtime/services/tables.yml
+- client_config: {allow_remember_me: true, allow_signup: true, confirm_email: false, enable_automatically: true, remember_me_days: 30, use_email: true, use_google: true}
+  server_config: {user_table: users}
+  source: /runtime/services/anvil/users.yml
+- client_config: {}
+  server_config: {}
+  source: /runtime/services/google.yml
+startup: {module: StartupModule, type: module}
+startup_form: null
