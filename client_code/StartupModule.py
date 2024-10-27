@@ -8,7 +8,7 @@ from anvil.tables import app_tables
 from anvil import *
 import anvil.js
 
-base_url = "https://automatic-golden-candle.anvil.app/_/api/abc"
+base_url = "https://wobbly-unusual-enthusiasm.anvil.app/_/api/abc"
 
 
 def startup():
@@ -17,12 +17,4 @@ def startup():
     anvil.server.call("add_user_color")
   open_form("Frame")
 
-
 startup()
-
-try:
-  response = anvil.server.call("abc_api")
-  # response = anvil.http.request(base_url, method="GET")
-  print(response)
-except Exception as e:
-  print(e)

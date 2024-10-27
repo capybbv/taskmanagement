@@ -82,6 +82,7 @@ class ProjectView(ProjectViewTemplate):
       role="delete-link",
       foreground=app.theme_colors["Secondary"],
     )
+    comment_link = Link(align="fa:pen", background="red", role="comment-link", tag=row)
     delete_column_link.add_event_handler("click", self.delete_column_link_click)
     flow_panel.add_component(editable_link)
     flow_panel.add_component(delete_column_link)

@@ -34,3 +34,13 @@ class ProjectCard(ProjectCardTemplate):
     if x:
       anvil.server.call("delete_project", self.item)
       open_form("Frame")
+
+  def delete_project_btn_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    x = alert(
+      "Are you sure you want to delete this project?",
+      buttons=[("YES", True), ("Cancel", False)],
+    )
+    if x:
+      anvil.server.call("delete_project", self.item)
+      open_form("Frame")

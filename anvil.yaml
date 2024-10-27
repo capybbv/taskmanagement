@@ -34,7 +34,7 @@ db_schema:
     - admin_ui: {width: 200}
       name: project_name
       type: string
-    - admin_ui: {width: 200}
+    - admin_ui: {order: 1, width: 249}
       name: columns
       target: columns
       type: link_multiple
@@ -196,9 +196,9 @@ exported_table_schema:
   name: Comments
   python_name: comments
   server: full
-metadata: {description: A simple task management app demonstrating the Anvil Material 3 theme., title: Task Manager App}
+metadata: {description: A simple task management app demonstrating the Anvil Material 3 theme., logo_img: 'asset:capybara.jpeg', title: Task Manager App}
 name: Task Manager App 1
-package_name: Task_Manager_App_1
+package_name: TaskManagement
 renamed: true
 runtime_options:
   client_version: '3'
@@ -213,7 +213,7 @@ runtime_options:
   version: 2
 services:
 - client_config: {enable_v2: true}
-  server_config: {}
+  server_config: {auto_create_missing_columns: false}
   source: /runtime/services/tables.yml
 - client_config: {allow_remember_me: true, allow_signup: true, confirm_email: false, enable_automatically: true, remember_me_days: 30, use_email: true, use_google: true}
   server_config: {user_table: users}
@@ -223,3 +223,4 @@ services:
   source: /runtime/services/google.yml
 startup: {module: StartupModule, type: module}
 startup_form: null
+uplink_visible: true

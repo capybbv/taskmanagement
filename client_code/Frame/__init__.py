@@ -69,3 +69,8 @@ class Frame(FrameTemplate):
     """This method is called when the link is clicked"""
     anvil.users.logout()
     open_form("LogoutScreen")
+
+  def logout_button_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    anvil.users.logout()
+    open_form("LogoutScreen")
