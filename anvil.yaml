@@ -52,6 +52,34 @@ db_schema:
       type: simpleObject
     server: full
     title: Rows
+  tasks:
+    client: none
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: project
+      target: projects
+      type: link_single
+    - admin_ui: {order: 1, width: 200}
+      name: title
+      type: string
+    - admin_ui: {order: 2, width: 200}
+      name: priority
+      type: string
+    - admin_ui: {order: 3, width: 200}
+      name: status
+      type: bool
+    - admin_ui: {order: 4, width: 200}
+      name: created_at
+      type: datetime
+    - admin_ui: {order: 5, width: 200}
+      name: updated_at
+      type: datetime
+    - admin_ui: {order: 6, width: 200}
+      name: created_by
+      target: users
+      type: link_single
+    server: full
+    title: Tasks
   users:
     client: none
     columns:
