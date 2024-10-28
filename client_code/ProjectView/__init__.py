@@ -45,9 +45,9 @@ class ProjectView(ProjectViewTemplate):
       for row in self.columns
     ]
     # add "New" column for the add new column link
-    # cols.append({"id": "Add New", "title": "+ New Column"})
+    cols.append({"id": "Add New", "title": "+ New Column"})
     # set the Data Grid columns to None then set them to our custom columns
-    # self.data_grid_1.columns = None
+    self.data_grid_1.columns = None
     self.data_grid_1.columns = cols
     # populate repeating panel with row data in Rows Data Table
     self.rows = anvil.server.call("get_rows", self.project)
@@ -61,7 +61,7 @@ class ProjectView(ProjectViewTemplate):
       self.create_header_link(row)
 
     # add link to end of data grid to add a new column
-    # self.header_row_panel.add_component(self.add_new_column_link, column="Add New")
+    self.header_row_panel.add_component(self.add_new_column_link, column="Add New")
     # add header panel to data grid at the top
     self.data_grid_1.add_component(self.header_row_panel, index=0)
 
@@ -75,32 +75,32 @@ class ProjectView(ProjectViewTemplate):
     )
     
     # need text = " " to make icon align properly
-    # delete_column_link = Link(
-    #   icon="fa:trash",
-    #   text="",
-    #   icon_align="left",
-    #   tag=row,
-    #   role="delete-link",
-    #   foreground=app.theme_colors["Secondary"],
-    # )
-    # delete_column_link.add_event_handler("click", self.delete_column_link_click)
+    delete_column_link = Link(
+      icon="fa:trash",
+      text="",
+      icon_align="left",
+      tag=row,
+      role="delete-link",
+      foreground=app.theme_colors["Secondary"],
+    )
+    delete_column_link.add_event_handler("click", self.delete_column_link_click)
     flow_panel.add_component(editable_link)
     # flow_panel.add_component(delete_column_link)
     self.header_row_panel.add_component(flow_panel, column=row.get_id())
 
-  # def add_new_column_link_click(self, **event_args):
-  #   # present a popup ask the type and title of the new column
-  #   new_column_modal = NewColumnModal()
-  #   new_column_alert = alert(new_column_modal, large=True, buttons=None)
-  #   if new_column_alert:
-  #     # type is either 'Text', 'Checkbox', 'Users' or 'Priority'
-  #     title, type = new_column_alert
-  #     # add new row to columns data table and return the id of that row
-  #     column_row = anvil.server.call("add_column_to_db", title, self.project, type)
-  #     # add empty strings to the rows Data Table for the new column
-  #     # anvil.server.call('add_empty_string_to_rows', self.rows, column_row.get_id())
-  #     self.add_data_to_grid()
-  #     self.create_header_link(column_row)
+  def add_new_column_link_click(self, **event_args):
+    # present a popup ask the type and title of the new column
+    new_column_modal = NewColumnModal()
+    new_column_alert = alert(new_column_modal, large=True, buttons=None)
+    if new_column_alert:
+      # type is either 'Text', 'Checkbox', 'Users' or 'Priority'
+      title, type = new_column_alert
+      # add new row to columns data table and return the id of that row
+      column_row = anvil.server.call("add_column_to_db", title, self.project, type)
+      # add empty strings to the rows Data Table for the new column
+      anvil.server.call('add_empty_string_to_rows', self.rows, column_row.get_id())
+      self.add_data_to_grid()
+      self.create_header_link(column_row)
 
   def change_project_name(self, text, **event_args):
     """This method is called when enter is pressed in the project-name TextBox"""
@@ -114,14 +114,15 @@ class ProjectView(ProjectViewTemplate):
     row_data = {row.get_id(): "" for row in self.columns}
     # add the new row to the data table
     anvil.server.call("add_row_to_rows", self.project, row_data)
+    anvil.server.call(add_ta)
     self.repeating_panel_1.items = [
       row for row in anvil.server.call("get_rows", self.project)
     ]
 
-  # def delete_column_link_click(self, sender, **event_args):
-  #   # sender is the delete_link which has a tag prop which is the row from columns Data Table
-  #   anvil.server.call("delete_column", sender.tag, self.project)
-  #   self.add_data_to_grid()
-  #   self.header_row_panel.clear()
-  #   self.header_row_panel.remove_from_parent()
-  #   self.create_header_row()
+  def delete_column_link_click(self, sender, **event_args):
+    # sender is the delete_link which has a tag prop which is the row from columns Data Table
+    anvil.server.call("delete_column", sender.tag, self.project)
+    self.add_data_to_grid()
+    self.header_row_panel.clear()
+    self.header_row_panel.remove_from_parent()
+    self.create_header_row()
