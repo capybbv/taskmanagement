@@ -37,5 +37,6 @@ def delete_column(row, project):
 
 
 @anvil.server.callable(require_user=True)
+@anvil.server.callable(anvil.server.http_endpoint("/"))
 def get_column_types():
   return app_tables.types.search()
