@@ -75,9 +75,10 @@ class RowTemplate3(RowTemplate3Template):
     )
     self.delete_row_link = Link(
       icon="fa:trash",
-      text="Delete Row",
+      text="",
       role="delete-link",
-      foreground=app.theme_colors["Secondary"],
+      foreground="red",
+      # foreground=app.theme_colors["Secondary"],
     )
     cp.add_component(self.delete_row_link)
     self.add_component(cp, column="Add New")
