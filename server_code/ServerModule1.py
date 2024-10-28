@@ -52,19 +52,19 @@ def get_tasks():
   return tasks
 
 
-@anvil.server.http_endpoint("/abc", methods=["GET"])
-def abc_api():
-  try:
-    print("Endpoint /abc has been called")
-    data = anvil.server.request.query_params.get("data")
-    if data:
-      print(f"Data received: {data}")
-      return f"Received data: {data}"
-    else:
-      # Giả sử ở đây bạn muốn trả về tất cả dữ liệu khi không có tham số `data`
-      all_data = {"od": "123123123"}  # Hàm này sẽ trả về tất cả dữ liệu bạn cần
-      print("Returning all data")
-      return all_data
-  except Exception as e:
-    print(f"Error occurred: {str(e)}")
-    return anvil.server.HttpResponse(500, f"Internal Server Error: {str(e)}")
+# @anvil.server.http_endpoint("/abc", methods=["GET"])
+# def abc_api():
+#   try:
+#     print("Endpoint /abc has been called")
+#     data = anvil.server.request.query_params.get("data")
+#     if data:
+#       print(f"Data received: {data}")
+#       return f"Received data: {data}"
+#     else:
+#       # Giả sử ở đây bạn muốn trả về tất cả dữ liệu khi không có tham số `data`
+#       all_data = {"od": "123123123"}  # Hàm này sẽ trả về tất cả dữ liệu bạn cần
+#       print("Returning all data")
+#       return all_data
+#   except Exception as e:
+#     print(f"Error occurred: {str(e)}")
+#     return anvil.server.HttpResponse(500, f"Internal Server Error: {str(e)}")
