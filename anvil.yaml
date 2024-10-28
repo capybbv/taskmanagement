@@ -241,7 +241,7 @@ runtime_options:
   version: 2
 services:
 - client_config: {enable_v2: true}
-  server_config: {auto_create_missing_columns: false}
+  server_config: {auto_create_missing_columns: true}
   source: /runtime/services/tables.yml
 - client_config: {allow_remember_me: true, allow_signup: true, confirm_email: false, enable_automatically: true, remember_me_days: 30, use_email: true, use_google: true}
   server_config: {user_table: users}

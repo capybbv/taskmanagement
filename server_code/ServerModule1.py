@@ -31,6 +31,7 @@ def add_user_color():
 
 @anvil.server.callable(require_user=True)
 def get_user_emails_and_colors():
+  print("call get_user_emails_and_colors")
   users = app_tables.users.search()
   emails = [user["email"] for user in users]
   colors = {user["email"]: f"theme:{user['color']}" for user in users}
