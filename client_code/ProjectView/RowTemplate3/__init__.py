@@ -24,8 +24,6 @@ class RowTemplate3(RowTemplate3Template):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
     # self.data is the row data from the rows data table, self.schema is the columns for the project
-    print("data", self.item["data"])
-    print("project", self.item["project"]["project_name"], self.item["project"]['columns'])
     self.data = self.item["data"]
     self.schema = self.item["project"]["columns"]
     for col in self.schema:

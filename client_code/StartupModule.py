@@ -10,7 +10,6 @@ import anvil.js
 
 base_url = "https://wobbly-unusual-enthusiasm.anvil.app/_/api/abc"
 
-
 def startup():
   user = anvil.users.login_with_form()
   if not user["color"]:
