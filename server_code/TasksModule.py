@@ -18,40 +18,37 @@ import anvil.server
 #   print("Hello, " + name + "!")
 #   return 42
 #
-@anvil.server.callable
-def add(a, b):
-    return a + b
 
 
-@anvil.server.callable
-def add_task(project, title, priority, status, estimate, created_by):
-    return app_tables.tasks.add_row(project=project,
-                                    title=title,
-                                    priority=priority,
-                                    status=status,
-                                    estimate=estimate,
-                                    created_at=anvil.server.call('anvil.server.datetime.now'),
-                                    created_by=created_by)
+# @anvil.server.callable
+# def add_task(project, title, priority, status, estimate, created_by):
+#     return app_tables.tasks.add_row(project=project,
+#                                     title=title,
+#                                     priority=priority,
+#                                     status=status,
+#                                     estimate=estimate,
+#                                     created_at=anvil.server.call('anvil.server.datetime.now'),
+#                                     created_by=created_by)
 
-@anvil.server.callable
-def get_tasks_1():
-    return app_tables.tasks.search()
+# @anvil.server.callable
+# def get_tasks_1():
+#     return app_tables.tasks.search()
 
-@anvil.server.callable
-@anvil.server.http_endpoint("/tasks/{task_id}")
-def get_task_by_id(task_id):
-    return app_tables.tasks.get(task_id=task_id)
+# @anvil.server.callable
+# @anvil.server.http_endpoint("/tasks/{task_id}")
+# def get_task_by_id(task_id):
+#     return app_tables.tasks.get(task_id=task_id)
 
-@anvil.server.callable
-def update_task(task_id, **kwargs):
-    task = app_tables.tasks.get(task_id=task_id)
-    task.update(**kwargs)
-    task.updated_at = anvil.server.call('anvil.server.datetime.now')
-    return task
+# @anvil.server.callable
+# def update_task(task_id, **kwargs):
+#     task = app_tables.tasks.get(task_id=task_id)
+#     task.update(**kwargs)
+#     task.updated_at = anvil.server.call('anvil.server.datetime.now')
+#     return task
 
-@anvil.server.callable
-def delete_task(task_id):
-    task = app_tables.tasks.get(task_id=task_id)
-    task.delete()
-    return task
+# @anvil.server.callable
+# def delete_task(task_id):
+#     task = app_tables.tasks.get(task_id=task_id)
+#     task.delete()
+#     return task
   
